@@ -1,0 +1,74 @@
+public class CreateLinkedList {
+	
+	Node head=null;
+	Node tail=null;
+	
+	static class Node{
+		int data;
+		Node next;
+		
+		Node(int data){
+			this.data=data;
+			this.next=null;
+		}
+	}
+	
+	public void addNode(int data) {
+		Node newNode= new Node(data);
+		
+		if(head==null) {
+			head=newNode;
+			tail=newNode;
+		}else {
+			tail.next=newNode;
+			tail=newNode;
+		}
+		
+	}
+	
+	public void display() {
+		Node current=head;
+		
+		if(current==null) {
+			System.out.println("list is empty.");
+		}else {
+			while(current!=null) {
+				System.out.print(current.data+"->");
+				current=current.next;
+			}
+		}
+	}
+	
+  //add node after data1
+	public void addNewNode(int data1, int data2) {
+		Node current=head;
+		Node newNode=new Node(data2);
+		if(current==null) {
+			System.out.println("list is empty.");	
+		}else {
+			while(current!=null) {
+				if(current.data==data1) {
+					newNode.next=current.next;
+					current.next=newNode;
+				}
+				current=current.next;
+			}
+			
+		}
+	}
+	
+	public static void main(String[] args) {
+		CreateLinkedList create= new CreateLinkedList();
+		create.addNode(1);
+		create.addNode(32);
+		create.addNode(6);
+		create.addNode(42);
+		create.addNode(14);
+    
+    create.display();
+    
+    //insert new node
+		create.addNewNode(6,5);
+		create.display();
+	}
+}
